@@ -23,7 +23,7 @@ const cancelBtn = document.getElementById("cancelDelete");
 
 const formOverlay = document.getElementById("formOverlay");
 const openFormBtn = document.getElementById("openFormBtn");
-const closeFormBtn = document.getElementById("closeFormBtn");
+const cancelFormBtn = document.getElementById("cancelFormBtn");
 const formTitle = document.getElementById("formTitle");
 
 let trips = JSON.parse(localStorage.getItem("trips")) || [];
@@ -36,6 +36,7 @@ filterType.value = "day";
 function openForm(isEdit = false) {
   formOverlay.classList.add("show");
   formTitle.textContent = isEdit ? "Edit Trip" : "Add Trip";
+  document.body.classList.add("no-scroll");
 }
 
 function closeForm() {
@@ -47,10 +48,12 @@ function closeForm() {
   overtimeFareInput.value = "";
   dateInput.value = new Date().toISOString().split("T")[0];
   formTitle.textContent = "Add Trip";
+  document.body.classList.remove("no-scroll");
 }
 
 openFormBtn.addEventListener("click", () => openForm(false));
-closeFormBtn.addEventListener("click", closeForm);
+cancelFormBtn.addEventListener("click", closeForm);
+
 formOverlay.addEventListener("click", (e) => {
   if (e.target === formOverlay) closeForm();
 });
@@ -103,12 +106,16 @@ form.addEventListener("submit", (e) => {
 
 function getLabel(dateStr) {
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const date = new Date(dateStr);
+  date.setHours(0, 0, 0, 0);
+
   const diff = Math.floor((today - date) / (1000 * 60 * 60 * 24));
 
   if (diff === 0) return "Today";
   if (diff === 1) return "Yesterday";
-  return date.toLocaleDateString();
+  return new Date(dateStr).toLocaleDateString();
 }
 
 function filterTrips() {
@@ -125,9 +132,9 @@ function filterTrips() {
     }
 
     if (type === "week") {
-      const weekAgo = new Date(today);
-      weekAgo.setDate(today.getDate() - 6);
-      return d >= weekAgo && d <= today;
+      const weekStart = new Date(today);
+      weekStart.setDate(today.getDate() - 6);
+      return d >= weekStart && d <= today;
     }
 
     if (type === "month") {

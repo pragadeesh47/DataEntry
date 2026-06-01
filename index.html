@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Tracker</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -55,10 +55,6 @@
   <div id="formOverlay" class="overlay">
     <div class="overlay-panel">
       <div class="overlay-header">
-        <button type="button" id="closeFormBtn" class="icon-text-btn">
-          <i data-lucide="arrow-left"></i>
-          <span>Back</span>
-        </button>
         <h3 id="formTitle">Add Trip</h3>
       </div>
 
@@ -85,6 +81,7 @@
         <input type="number" id="overtimeFare" placeholder="Overtime fare" class="hidden" />
 
         <button type="submit" class="primary">Save</button>
+        <button type="button" id="cancelFormBtn" class="secondary-btn">Cancel</button>
       </form>
     </div>
   </div>
