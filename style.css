@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 16px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center; 
+  gap: 6px; 
+  margin: 6px 0;
+}
+
+input[type="checkbox"]{
+    width: fit-content;
+}
+
+.hidden {
+  display: none;
+}
+
+#overtimeFare{
+    margin-bottom: 8px;
+}
+
+/* Button */
+button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: #0f172a;
+  color: white;
+  width: 100%;
+}
+
+/* Filter */
+.filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+select, .filter input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Summary */
+.summary {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.summary div {
+  flex: 1;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+/* Scroll list */
+.list-container {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+/* Group title */
+.group-title {
+  font-size: 13px;
+  margin: 10px 0 5px;
+  color: #64748b;
+}
+
+/* List item */
+li {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.trip-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trip-sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Icon buttons */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  background: white;
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.edit-btn {
+  color: #2563eb;
+}
+
+.delete-btn {
+  color: #dc2626;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.danger {
+  background: red;
+  color: white;
+}
