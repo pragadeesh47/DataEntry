@@ -5,82 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Trip Tracker</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json">
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+  <div class="container">
+    <header class="topbar">
+      <div>
+        <h1>Trip Tracker</h1>
+        <p class="subtitle">Track your trips & earnings</p>
+      </div>
+    </header>
 
-<div class="container">
+    <section class="filter card">
+      <div class="filter-row">
+        <select id="filterType">
+          <option value="day" selected>Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+          <option value="total">Total</option>
+          <option value="custom">Custom Date</option>
+        </select>
 
-  <header>
-    <h2>Trip Tracker</h2>
-    <p class="subtitle">Track your trips & earnings</p>
-  </header>
+        <input type="date" id="customDate" class="hidden" />
+      </div>
 
-  <!-- FORM -->
-  <form id="tripForm" class="card">
-    <input type="date" id="date" required />
+      <button type="button" id="clearFilter" class="ghost-btn">Clear Filter</button>
+    </section>
 
-    <div class="grid">
-      <input type="text" id="from" placeholder="From" required />
-      <input type="text" id="to" placeholder="To" required />
-    </div>
+    <section class="summary" id="summary"></section>
 
-    <div class="grid">
-      <input type="number" id="feet" placeholder="Feet (20/40)" required />
-      <input type="number" id="trips" placeholder="Trips" required />
-    </div>
-
-    <input type="number" id="fare" placeholder="Fare per trip" required />
-
-    <label class="checkbox">
-      <input type="checkbox" id="overtimeCheck" />
-      <span>Overtime</span>
-    </label>
-
-    <input type="number" id="overtimeFare" placeholder="Overtime fare" class="hidden" />
-
-    <button type="submit" class="primary">Save</button>
-  </form>
-
-  <!-- FILTER -->
-  <div class="filter">
-    <select id="filterType">
-      <option value="day">Today</option>
-      <option value="week">This Week</option>
-      <option value="month">This Month</option>
-      <option value="total">Total</option>
-      <option value="custom">Custom Date</option>
-    </select>
-
-    <input type="date" id="customDate" class="hidden" />
+    <section class="list-section">
+      <div class="section-head">
+        <h2>Trips</h2>
+        <p id="listMeta" class="list-meta"></p>
+      </div>
+      <div class="list-container">
+        <div id="tripList"></div>
+      </div>
+    </section>
   </div>
 
-  <!-- SUMMARY -->
-  <section class="summary" id="summary"></section>
+  <button id="openFormBtn" class="fab" aria-label="Add trip">
+    <i data-lucide="plus"></i>
+  </button>
 
-  <!-- LIST -->
-  <div class="list-container">
-    <div id="tripList"></div>
-  </div>
+  <div id="formOverlay" class="overlay">
+    <div class="overlay-panel">
+      <div class="overlay-header">
+        <button type="button" id="closeFormBtn" class="icon-text-btn">
+          <i data-lucide="arrow-left"></i>
+          <span>Back</span>
+        </button>
+        <h3 id="formTitle">Add Trip</h3>
+      </div>
 
-</div>
+      <form id="tripForm" class="card trip-form">
+        <input type="date" id="date" required />
 
-<!-- MODAL -->
-<div id="deleteModal" class="modal">
-  <div class="modal-content">
-    <p>Delete this trip?</p>
-    <div class="modal-actions">
-      <button id="cancelDelete">Cancel</button>
-      <button id="confirmDelete" class="danger">Delete</button>
+        <div class="grid">
+          <input type="text" id="from" placeholder="From" required />
+          <input type="text" id="to" placeholder="To" required />
+        </div>
+
+        <div class="grid">
+          <input type="number" id="feet" placeholder="Feet (20/40)" required />
+          <input type="number" id="trips" placeholder="Trips" required />
+        </div>
+
+        <input type="number" id="fare" placeholder="Fare per trip" required />
+
+        <label class="checkbox">
+          <input type="checkbox" id="overtimeCheck" />
+          <span>Overtime</span>
+        </label>
+
+        <input type="number" id="overtimeFare" placeholder="Overtime fare" class="hidden" />
+
+        <button type="submit" class="primary">Save</button>
+      </form>
     </div>
   </div>
-</div>
 
-<script src="app.js"></script>
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <p>Delete this trip?</p>
+      <div class="modal-actions">
+        <button id="cancelDelete" type="button">Cancel</button>
+        <button id="confirmDelete" type="button" class="danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
