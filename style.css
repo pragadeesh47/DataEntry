@@ -394,6 +394,7 @@
 /*zoom in fix  */
 .overlay {
   position: fixed;
+    top: 100px;
   inset: 0;
   background: rgba(15, 23, 42, 0.35);
   backdrop-filter: blur(4px);
